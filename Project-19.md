@@ -7,5 +7,44 @@ Teams can  connect Terraform to version control, share variables, run Terraform 
 
 Terraform Cloud executes Terraform commands on disposable virtual machines, this remote execution is also called [remote operations.](https://developer.hashicorp.com/terraform/cloud-docs/run/remote-operations).
 
+__TASK__
+
+Instead of running the Terraform codes in __Project-18__ from a command line, rather it is being executed from __TERRAFORM CLOUD__ console. The AMI is built with __PACKER__ while __ANSIBLE__ is used to configure the infrastructure after its been provisioned by Terraform.
+
+
+__PREREQUISITE__
+
+- Install __ANSIBLE__
+- Install [__PACKER__](https://developer.hashicorp.com/packer/downloads?product_intent=packer).
+- Configure [__AWS CLI__](https://www.youtube.com/watch?v=u0JyzUGzvJA)
+
 ### __Migrate the .tf codes to Terraform Cloud__.
+
+We can migrate our codes to __Terraform Cloud__ and manage our __AWS__ infrastructure from the terraform cloud.
+
+Create a new repository in our GitHub __narbyd-terraform-cloud__.
+
+![](./images/nw.PNG)
+
+Clone the repository and copy the codes into the repository. Then push the Terraform codes in the __narbyd-project__  to the repository.
+
+![](./images/mv-p.PNG)
+![](./images/np1.PNG)
+![](./images/np2.PNG)
+
+Create a Terraform Cloud account
+
+![](./images/ws1.PNG)
+![](./images/ws2.PNG)
+![](./images/ws3.PNG)
+![](./images/ws4.PNG)
+![](./images/def.PNG)
+![](./images/ws5.PNG)
+
+
+
+
+
+
+
 
