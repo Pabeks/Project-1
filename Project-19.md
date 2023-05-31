@@ -31,7 +31,7 @@ Frst we install __PACKER__ through the powershell - run as administrator.
 Go through the documentation to set up the __PACKER__ file. Click [here](https://developer.hashicorp.com/packer/docs/templates/hcl_templates).
 
 PACKER is used in this project to create the AMIs for the launch templates used by the Auto Scaling Group. The code has been modified for PACKER to create the AMIs. The packer creates the instances, provision the instances using the shell scripts and creates the AMIs. It also deletes the instances when the AMIs are created.
-The codes can be found [here](https://github.com/dybran/narbyd-terraform-cloud/tree/main/narbyd-project).
+The codes can be found [here](https://github.com/dybran/Project-19/tree/main/narbyd-project).
 
 `$ cd narbyd-terraform-cloud\narbyd-project\AMI`
 
