@@ -102,9 +102,11 @@ Set two environment variables: __AWS_ACCESS_KEY_ID__ and __AWS_SECRET_ACCESS_KEY
 
 ![](./images/vari.PNG)
 
-We will set the values we used in [Project 16](https://github.com/dybran/Project-16). These credentials will be used to privision your AWS infrastructure by Terraform Cloud.
+We will set the values we used in [Project 16](https://github.com/dybran/Project-16) to congifure the __AWS CLI__. These credentials will be used to privision the AWS infrastructure by Terraform Cloud.
 
 Then change the __terraform.tfvars__ to __terraform.auto.tfvars__ on the codes so terraform can use the variables.
+
+__N/B:__ Whenever we update the code in the __narbyd-terraform-cloud__ on GITHUB, the __terraform-cloud__ creates a plan for it automatically making use of version control.
 
 
 
