@@ -1,6 +1,5 @@
 ---
 - hosts: tag_Name_narbyd_sonarqube
   user: ubuntu
-  become: true
   roles:
      - sonarqube
