@@ -32,10 +32,10 @@ source ~/.bash_profile
 #installing self signed certificate for apache
 sudo yum install -y mod_ssl
 
-sudo openssl req -newkey rsa:2048 -nodes -keyout /etc/pki/tls/private/ACS.key -x509 -days 365 -out /etc/pki/tls/certs/ACS.crt \
--subj "/C=UK/ST=London/L=London/O=darey.io/OU=devops/CN=$(curl -s http://169.254.169.254/latest/meta-data/local-hostname)"
+sudo openssl req -newkey rsa:2048 -nodes -keyout /etc/pki/tls/private/narbyd.key -x509 -days 365 -out /etc/pki/tls/certs/narbyd.crt \
+-subj "/C=UK/ST=London/L=London/O=narbyd/OU=narbyd-project/CN=$(curl -s http://169.254.169.254/latest/meta-data/local-hostname)"
 
 
-sudo sed -i 's/localhost.crt/ACS.crt/g'  /etc/httpd/conf.d/ssl.conf
+sudo sed -i 's/localhost.crt/narbyd.crt/g'  /etc/httpd/conf.d/ssl.conf
 
-sudo sed -i 's/localhost.key/ACS.key/g'  /etc/httpd/conf.d/ssl.conf
+sudo sed -i 's/localhost.key/narbyd.key/g'  /etc/httpd/conf.d/ssl.conf
