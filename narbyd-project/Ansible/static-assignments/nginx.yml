@@ -1,5 +1,4 @@
 ---
 - hosts: tag_Name_narbyd_nginx
-  become: true
   roles:
     - nginx
