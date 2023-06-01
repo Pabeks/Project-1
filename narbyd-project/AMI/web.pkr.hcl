@@ -32,7 +32,7 @@ source "amazon-ebs" "narbyd-web" {
 
 # a build block invokes sources and runs provisioning steps on them.
 build {
-  sources = ["source.amazon-ebs.terraform-web-prj-19"]
+  sources = ["source.amazon-ebs.narbyd-web"]
 
   provisioner "shell" {
     script = "web.sh"
