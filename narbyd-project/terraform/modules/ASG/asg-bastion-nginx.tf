@@ -5,13 +5,13 @@ data "aws_availability_zones" "available" {
 
 
 # creating sns topic for all the auto scaling groups
-resource "aws_sns_topic" "ACS-sns" {
+resource "aws_sns_topic" "narbyd-sns" {
   name = "Default_CloudWatch_Alarms_Topic"
 }
 
 
 # creating notification for all the auto scaling groups
-resource "aws_autoscaling_notification" "david_notifications" {
+resource "aws_autoscaling_notification" "narbyd_notifications" {
   group_names = [
     aws_autoscaling_group.bastion-asg.name,
     aws_autoscaling_group.nginx-asg.name,
@@ -25,7 +25,7 @@ resource "aws_autoscaling_notification" "david_notifications" {
     "autoscaling:EC2_INSTANCE_TERMINATE_ERROR",
   ]
 
-  topic_arn = aws_sns_topic.ACS-sns.arn
+  topic_arn = aws_sns_topic.narbyd-sns.arn
 }
 
 
@@ -56,7 +56,7 @@ resource "aws_autoscaling_group" "bastion-asg" {
   }
   tag {
     key                 = "Name"
-    value               = "ACS-bastion"
+    value               = "narbyd-bastion"
     propagate_at_launch = true
   }
 
@@ -84,7 +84,7 @@ resource "aws_autoscaling_group" "nginx-asg" {
 
   tag {
     key                 = "Name"
-    value               = "ACS-nginx"
+    value               = "narbyd-nginx"
     propagate_at_launch = true
   }
 
@@ -94,6 +94,5 @@ resource "aws_autoscaling_group" "nginx-asg" {
  # attaching autoscaling group of nginx to external load balancer
 resource "aws_autoscaling_attachment" "asg_attachment_nginx" {
   autoscaling_group_name = aws_autoscaling_group.nginx-asg.id
-  alb_target_group_arn   = var.nginx-alb-tgt
+  lb_target_group_arn   = var.nginx-alb-tgt
 }
-

@@ -46,11 +46,9 @@ variable "tags" {
 
 variable "name" {
   type    = string
-  default = "ACS"
+  default = "narbyd"
 
 }
 variable "environment" {
   default = "true"
 }
-
-

@@ -19,4 +19,3 @@ output "tooling-tgt" {
   description = "Tooling target group"
   value       = aws_lb_target_group.tooling-tgt.arn
 }
-

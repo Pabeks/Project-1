@@ -1,4 +1,3 @@
-
 # launch template for bastion
 
 resource "aws_launch_template" "bastion-launch-template" {

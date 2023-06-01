@@ -1,9 +1,9 @@
 variable "efs-subnet-2" {
-  description = "Second subnet for the mount target"
+  description = "subnet 2 for the mount target"
 }
 
 variable "efs-subnet-1" {
-  description = "First subnet for the mount target"
+  description = "subnet 1 for the mount target"
 }
 
 variable "efs-sg" {
@@ -14,7 +14,7 @@ variable "efs-sg" {
 
 variable "account_no" {
   type        = string
-  description = "account number for the aws"
+  description = "account number for the AWS"
 } 
 
 

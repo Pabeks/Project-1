@@ -1,19 +1,19 @@
 # terraform {
 #   backend "s3" {
-#     bucket         = "pbl-test-18"
+#     bucket         = "narbyd-dev-terraform-bucket"
 #     key            = "global/s3/terraform.tfstate"
 #     region         = "us-east-1"
-#     dynamodb_table = "terraform-locks"
+#     dynamodb_table = "narbyd-terraform-locks"
 #     encrypt        = true
 #   }
 # }
 
 terraform {
   backend "remote" {
-    organization = "pisitis"
+    organization = "narbyd"
 
     workspaces {
-      name = "PBL-19"
+      name = "narbyd-project"
     }
   }
 }

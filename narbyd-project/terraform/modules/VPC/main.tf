@@ -1,12 +1,10 @@
-
-
 # Create VPC
-resource "aws_vpc" "main" {
+resource "aws_vpc" "narbyd-vpc" {
   cidr_block                     = var.vpc_cidr
   enable_dns_support             = var.enable_dns_support
   enable_dns_hostnames           = var.enable_dns_hostnames
-  enable_classiclink             = var.enable_classiclink
-  enable_classiclink_dns_support = var.enable_dns_support
+  # enable_classiclink             = var.enable_classiclink
+  # enable_classiclink_dns_support = var.enable_classiclink_dns_support
 
 
   tags = merge(
@@ -25,7 +23,7 @@ data "aws_availability_zones" "available" {
 # Create public subnets
 resource "aws_subnet" "public" {
   count                   = var.preferred_number_of_public_subnets == null ? length(data.aws_availability_zones.available.names) : var.preferred_number_of_public_subnets
-  vpc_id                  = aws_vpc.main.id
+  vpc_id                  = aws_vpc.narbyd-vpc.id
   cidr_block              = var.public_subnets[count.index]
   map_public_ip_on_launch = true
   availability_zone       = data.aws_availability_zones.available.names[count.index]
@@ -35,7 +33,7 @@ resource "aws_subnet" "public" {
   tags = merge(
     var.tags,
     {
-      Name = format("%s-PublicSubnet-%s", var.name, count.index)
+      Name = format("%s-pub-sub-%s", var.name, count.index)
     },
   )
 
@@ -44,7 +42,7 @@ resource "aws_subnet" "public" {
 # Create private subnets
 resource "aws_subnet" "private" {
   count                   = var.preferred_number_of_private_subnets == null ? length(data.aws_availability_zones.available.names) : var.preferred_number_of_private_subnets
-  vpc_id                  = aws_vpc.main.id
+  vpc_id                  = aws_vpc.narbyd-vpc.id
   cidr_block              = var.private_subnets[count.index]
   map_public_ip_on_launch = true
   availability_zone       = data.aws_availability_zones.available.names[count.index]
@@ -52,7 +50,7 @@ resource "aws_subnet" "private" {
   tags = merge(
     var.tags,
     {
-      Name = format("%s-PrivateSubnet-%s", var.name, count.index)
+      Name = format("%s-priv-sub-%s", var.name, count.index)
     },
   )
 

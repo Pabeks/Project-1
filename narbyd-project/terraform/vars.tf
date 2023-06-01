@@ -1,5 +1,5 @@
 variable "region" {
-  default = "eu-west-1"
+  default = "us-east-1"
 }
 
 variable "vpc_cidr" {
@@ -18,9 +18,9 @@ variable "enable_classiclink" {
   default = "false"
 }
 
-variable "enable_classiclink_dns_support" {
-  default = "false"
-}
+# variable "enable_classiclink_dns_support" {
+#   default = "false"
+# }
 
 variable "preferred_number_of_public_subnets" {
   type        = number
@@ -34,7 +34,7 @@ variable "preferred_number_of_private_subnets" {
 
 variable "name" {
   type    = string
-  default = "ACS"
+  default = "narbyd"
 
 }
 
@@ -92,3 +92,4 @@ variable "master-password" {
   type        = string
   description = "RDS master password"
 }
+
