@@ -25,14 +25,14 @@ source "amazon-ebs" "narbyd-ubuntu" {
   ssh_username = "ubuntu"
   tag {
     key   = "Name"
-    value = "terraform-ubuntu-prj-19"
+    value = "narbyd-ubuntu"
   }
 }
 
 
 # a build block invokes sources and runs provisioning steps on them.
 build {
-  sources = ["source.amazon-ebs.terraform-ubuntu-prj-19"]
+  sources = ["source.amazon-ebs.narbyd-ubuntu"]
 
   provisioner "shell" {
     script = "ubuntu.sh"
