@@ -13,7 +13,8 @@ terraform {
     organization = "narbyd"
 
     workspaces {
-      name = "narbyd-project"
+      name = "narbyd-terraform-cloud"
     }
   }
 }
+

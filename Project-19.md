@@ -7,22 +7,32 @@ Teams can  connect Terraform to version control, share variables, run Terraform 
 
 Terraform Cloud executes Terraform commands on disposable virtual machines, this remote execution is also called [remote operations.](https://developer.hashicorp.com/terraform/cloud-docs/run/remote-operations).
 
-__TASK__
-
 Instead of running the Terraform codes in __Project-18__ from a command line, rather it is being executed from __TERRAFORM CLOUD__ console. The AMI is built with __PACKER__ while __ANSIBLE__ is used to configure the infrastructure after its been provisioned by Terraform.
+
+__TASKS__
+
+- Build AMIs using Packer
+- Update the terraform script with the AMI IDs generated from packer build
+- Create terraform cloud and backend
+- Run terraform script
+- Update Ansible script with values from Terraform output
+	- RDS endpoints for wordpress and tooling
+	- Database name, password and username for wordpress and tooling
+	- Access point ID for wordpress and tooling
+	- Internal Load balancer DNS for Nginx reverse proxy
+- Run the Ansible script
+- Access the website through the browser.
 
 
 __PREREQUISITE__
 
 - Install __ANSIBLE__
 - Install [__PACKER__](https://developer.hashicorp.com/packer/downloads?product_intent=packer).
-- Configure [__AWS CLI__](https://www.youtube.com/watch?v=u0JyzUGzvJA)
+- Configure [__AWS CLI__](https://www.youtube.com/watch?v=u0JyzUGzvJA).
 
 __Create the AMIs using PACKER__
 
-
-
-Frst we install __PACKER__ through the powershell - run as administrator.
+First we install __PACKER__ through the powershell - run as administrator.
 
 `$ choco install packer -y`
 
@@ -30,7 +40,7 @@ Frst we install __PACKER__ through the powershell - run as administrator.
 
 Go through the documentation to set up the __PACKER__ file. Click [here](https://developer.hashicorp.com/packer/docs/templates/hcl_templates).
 
-PACKER is used in this project to create the AMIs for the launch templates used by the Auto Scaling Group. The code has been modified for PACKER to create the AMIs. The packer creates the instances, provision the instances using the shell scripts and creates the AMIs. It also deletes the instances when the AMIs are created.
+__PACKER__ is used in this project to create the AMIs for the launch templates used by the Auto Scaling Group. The code has been modified for PACKER to create the AMIs. The packer creates the instances, provision the instances using the shell scripts and creates the AMIs. It also deletes the instances when the AMIs are created.
 The codes can be found [here](https://github.com/dybran/Project-19/tree/main/narbyd-project).
 
 `$ cd narbyd-terraform-cloud\narbyd-project\AMI`
@@ -39,9 +49,26 @@ Then build the AMIs.
 
 `$ packer build bastion.pkr.hcl`
 
+![](./images/pkr-b.PNG)
+![](./images/pkr-b2.PNG)
 
+`$ packer build nginx.pkr.hcl`
 
+![](./images/pkr-n.PNG)
+![](./images/pkr-n2.PNG)
 
+`$ packer build ubuntu.pkr.hcl`
+
+![](./images/pkr-u.PNG)
+![](./images/pkr-u2.PNG)
+
+`$ packer build web.pkr.hcl`
+
+![](./images/pkr-w2.PNG)
+
+Next we update the __terraform.auto.vars__ with the AMI IDs
+
+![](./images/tvs.PNG)
 
 ### __Migrate the .tf codes to Terraform Cloud__.
 

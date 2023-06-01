@@ -22,7 +22,7 @@ source "amazon-ebs" "narbyd-bastion" {
       virtualization-type = "hvm"
     }
     most_recent = true
-    owners      = ["939895954199"]
+    owners      = ["309956199498"]
   }
   ssh_username = "ec2-user"
   tag {
