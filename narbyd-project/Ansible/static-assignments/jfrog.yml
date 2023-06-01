@@ -1,5 +1,4 @@
 ---
 - hosts: tag_Name_narbyd_artifactory
-  become: true
   roles:
      - artifactory
