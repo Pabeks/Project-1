@@ -66,6 +66,8 @@ Then build the AMIs.
 
 ![](./images/pkr-w2.PNG)
 
+![](./images/aim.PNG)
+
 Next we update the __terraform.auto.vars__ with the AMI IDs
 
 ![](./images/tvs.PNG)
@@ -107,6 +109,75 @@ We will set the values we used in [Project 16](https://github.com/dybran/Project
 Then change the __terraform.tfvars__ to __terraform.auto.tfvars__ on the codes so terraform can use the variables.
 
 __N/B:__ Whenever we update the code in the __narbyd-terraform-cloud__ on GITHUB, the __terraform-cloud__ creates a plan for it automatically making use of version control.
+
+![](./images/pln-ap.PNG)
+
+Then confirm and apply
+
+![](./images/plnz.PNG)
+
+![](./images/res.PNG)
+
+We can see that the instances in the target groups are __unhealthy__. This is because we have not configured the instances.
+
+![](./images/tgt-u.PNG)
+![](./images/tgt-u2.PNG)
+![](./images/tgt-u3.PNG)
+
+If we try to configure the instances using Ansible, we willl run into a lot of errors. To fix this, we go to the terraform code and comment out the __listeners__ in the __alb.tf__
+
+![](./images/liste.PNG)
+
+Also comment out the __auto scaling attachment__ in the __asg-bastion-nginx.tf__ and __asg-tooling-wordpress.tf__.
+
+![](./images/awt.PNG)
+
+Push the code to github and run the plan. We can see that the changes will be effected when we run apply.
+
+![](./images/desr.PNG)
+
+Apply
+
+![](./images/asss.PNG)
+
+If we check the target group from the console, we will find out that there are no target registered to the groups.
+
+![](./images/not.PNG)
+
+And there are no listeners in the load balancer.
+
+![](./images/li.PNG)
+
+To configure the infrastructure using Ansible, we will need to ssh into the bastion instance. Clck [here](https://www.youtube.com/watch?v=lKXMyln_5q4).
+
+Then clone the Ansible directory in the github.
+
+![](./images/wer.PNG)
+
+Ansible will need to connect to AWS to pick the IP address for the dynamic inventory. We need to run the command
+
+`$ aws configure`
+
+and add the __access key__ and __secret key__ to the bastion instance.
+
+![](./images/12345.PNG)
+
+Then `$ cd /home/ec2-user/Project-19/narbyd-project/Ansible`
+
+Install the __python3-botocore__
+
+`$ sduo yum search boto`
+
+`sudo yum install python3-botocore.noarch -y`
+
+Run the command
+
+`$ ansible-inventory -i inventory/aws_ec2.yml --graph` to make sure that ansible can connect to the ip addresses
+
+
+
+
+
 
 
 
