@@ -170,12 +170,65 @@ Install the __python3-botocore__
 
 `sudo yum install python3-botocore.noarch -y`
 
+`$ sudo yum install python3-boto3.noarch -y`
+
+![](./images/python3-boto3.PNG)
+![](./images/python3-boto13.PNG)
+
 Run the command
 
 `$ ansible-inventory -i inventory/aws_ec2.yml --graph` to make sure that ansible can connect to the ip addresses
 
+![](./images/graph.PNG)
+
+Next, we will update the Ansible with the: 
+
+RDS endpoints for wordpress and tooling, Database name, password and username for wordpress and tooling.
+  
+![](./images/rds.PNG)
+![](./images/dbt.PNG)
+
+Access point ID for wordpress and tooling respectively.
+ ![](./images/acc1.PNG)
+ ![](./images/acc2.PNG)
+ ![](./images/tooling.PNG)
+
+Internal Load balancer DNS for Nginx reverse proxy
+  
+![](./images/int-lb.PNG)
+
+We can then run the command
+
+`$ ansible-playbook -i inventory/aws_ec2.yml playbooks/site.yml`
+
+![](./images/play.PNG)
+![](./images/play2.PNG)
 
 
+We then go to the __terraform__ script and uncomment the __auto scaling attachment__ in the __asg-bastion-nginx.tf__ and __asg-tooling-wordpress.tf__.
+
+Push the updated terrform code to github. Terraform cloud picks up the changes and runs a plan.
+
+![](./images/tpl.PNG)
+
+Click on apply
+
+![](./images/apppp.PNG)
+
+
+Check if the target groups are __healthy__
+
+![](./images/health-n.PNG)
+![](./images/heath-w.PNG)
+![](./images/health-t.PNG)
+
+Access the website from the browser
+
+
+
+__PROBLEM ENCOUNTERED:__
+- nginx target group was __unhealthy__, I remotely logged into the nginx server through the bastion and found out that there was an error in the `/etc/nginx/nginx.conf` file. Fixed the error and restarted the server - `sudo ssytemctl restart nginx`.
+- 
 
 
 
