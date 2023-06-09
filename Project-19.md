@@ -166,13 +166,15 @@ and add the __access key__ and __secret key__ to the bastion instance.
 
 Then `$ cd /home/ec2-user/Project-19/narbyd-project/Ansible`
 
-Install the __python3-botocore__
+Install the __python3-botocore__ and __boto3__
 
-`$ sduo yum search boto`
+`$ sudo dnf install python3-devel`
+ 
+`$ curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py`
+ 
+`$ sudo python3.11 get-pip.py`
 
-`sudo yum install python3-botocore.noarch -y`
-
-`$ sudo yum install python3-boto3.noarch -y`
+`$ pip install botocore boto3`
 
 ![](./images/python3-boto3.PNG)
 ![](./images/python3-boto13.PNG)
