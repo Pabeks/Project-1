@@ -1,13 +1,15 @@
 ### __USING TERRAFORM IAC TOOL TO AUTOMATE AWS CLOUD SOLUTION FOR 2 COMPANY WEBSITES (INTRODUCING TERRAFORM CLOUD, ANSIBLE & PACKER) - CONTINUATION__.
 
-In [Project-18](https://github.com/dybran/Project-18/blob/main/Project-18.md), we migrated our __terraform.tfstate__ file to __S3__ bucket for easy collaboration amongst DevOps team mates in an organisation.
+In [Project-18](https://github.com/dybran/Project-18/blob/main/Project-18.md), we migrated our __terraform.tfstate__ file to __S3__ bucket for easy collaboration amongst DevOps team mates in an organisation. We will be introducing [__Terraform Cloud__](https://developer.hashicorp.com/terraform/cloud-docs) to further automate the process.
 
-We will be introducing [__Terraform Cloud__](https://developer.hashicorp.com/terraform/cloud-docs). Terraform Cloud is an application that helps teams use Terraform together. It manages Terraform runs in a consistent and reliable environment, and includes easy access to shared state and secret data, access controls for approving changes to infrastructure, a private registry for sharing Terraform modules, detailed policy controls for governing the contents of Terraform configurations and more.
+__BENEFITS:__
+
+[__Terraform Cloud__](https://developer.hashicorp.com/terraform/cloud-docs) is an application that helps teams use Terraform together. It manages Terraform runs in a consistent and reliable environment, and includes easy access to shared state and secret data, access controls for approving changes to infrastructure, a private registry for sharing Terraform modules, detailed policy controls for governing the contents of Terraform configurations and more.
 Teams can  connect Terraform to version control, share variables, run Terraform in a stable remote environment, and securely store remote state.
 
 Terraform Cloud executes Terraform commands on disposable virtual machines, this remote execution is also called [remote operations.](https://developer.hashicorp.com/terraform/cloud-docs/run/remote-operations).
 
-Instead of running the Terraform codes in __Project-18__ from a command line, rather it is being executed from __TERRAFORM CLOUD__ console. The AMI is built with __PACKER__ while __ANSIBLE__ is used to configure the infrastructure after its been provisioned by Terraform.
+Instead of running the Terraform codes in [Project-18](https://github.com/dybran/Project-18/blob/main/Project-18.md) from a command line, rather it is being executed from [__Terraform Cloud__](https://developer.hashicorp.com/terraform/cloud-docs) console. The __AMI__ is built with __PACKER__ while __ANSIBLE__ is used to configure the infrastructure after its been provisioned with the Terraform script.
 
 __TASKS__
 
@@ -124,7 +126,7 @@ We can see that the instances in the target groups are __unhealthy__. This is be
 ![](./images/tgt-u2.PNG)
 ![](./images/tgt-u3.PNG)
 
-If we try to configure the instances using Ansible, we willl run into a lot of errors. To fix this, we go to the terraform code and comment out the __listeners__ in the __alb.tf__
+If we try to configure the instances using Ansible, we will run into a lot of errors. To fix this, we go to the terraform code and comment out the __listeners__ in the __alb.tf__
 
 ![](./images/liste.PNG)
 
@@ -205,7 +207,7 @@ We can then run the command
 ![](./images/play2.PNG)
 
 
-We then go to the __terraform__ script and uncomment the __auto scaling attachment__ in the __asg-bastion-nginx.tf__ and __asg-tooling-wordpress.tf__.
+We then go to the __terraform__ script and uncomment the __auto scaling attachment__ in the __asg-bastion-nginx.tf__ and __asg-tooling-wordpress.tf__ and also the __listeners__ in the __alb.tf__.
 
 Push the updated terrform code to github. Terraform cloud picks up the changes and runs a plan.
 
