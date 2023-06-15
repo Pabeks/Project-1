@@ -126,7 +126,7 @@ We can see that the instances in the target groups are __unhealthy__. This is be
 ![](./images/tgt-u2.PNG)
 ![](./images/tgt-u3.PNG)
 
-If we try to configure the instances using Ansible, we will run into a lot of errors. To fix this, we go to the terraform code and comment out the __listeners__ in the __alb.tf__
+If we try to configure the instances using Ansible, we will run into a lot of errors. To fix this, we go to the terraform code and comment out the __listeners__ in the __alb.tf__.
 
 ![](./images/liste.PNG)
 
@@ -150,7 +150,7 @@ And there are no listeners in the load balancer.
 
 ![](./images/li.PNG)
 
-To configure the infrastructure using Ansible, we will need to ssh into the bastion instance. Clck [here](https://www.youtube.com/watch?v=lKXMyln_5q4).
+To configure the infrastructure using Ansible, we will need to ssh into the bastion instance. Click [here](https://www.youtube.com/watch?v=lKXMyln_5q4).
 
 Then clone the Ansible directory in the github.
 
