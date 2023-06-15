@@ -228,7 +228,7 @@ Access the website from the browser
 
 
 __PROBLEM ENCOUNTERED:__
-- nginx target group was __unhealthy__, I remotely logged into the nginx server through the bastion and found out that there was an error in the `/etc/nginx/nginx.conf` file. Fixed the error and restarted the server - `sudo ssytemctl restart nginx`.
+- nginx target group was __unhealthy__, I remotely logged into the nginx server through the bastion and found out that there was an error in the `/etc/nginx/nginx.conf` file. Fixed the error and restarted the server - `sudo sytemctl restart nginx`.
 - 
 
 
