@@ -225,10 +225,13 @@ Check if the target groups are __healthy__
 
 Access the website from the browser
 
+![](./images/wp11.PNG)
+![](./images/wp-12.PNG)
 
 
 __PROBLEM ENCOUNTERED:__
-- nginx target group was __unhealthy__, I remotely logged into the nginx server through the bastion and found out that there was an error in the `/etc/nginx/nginx.conf` file. Fixed the error and restarted the server - `sudo sytemctl restart nginx`.
+- nginx target group was __unhealthy__, restarted the nginx server - `sudo systemctl restart nginx` to fix it.
+- couldn't access the website through the browser. I had to check the configuration files and fixed the configurations.
 
 
 
