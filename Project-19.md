@@ -176,9 +176,6 @@ Install the __python3-botocore__ and __boto3__
 
 `$ pip install botocore boto3`
 
-![](./images/python3-boto3.PNG)
-![](./images/python3-boto13.PNG)
-
 Run the command
 
 `$ ansible-inventory -i inventory/aws_ec2.yml --graph` to make sure that ansible can connect to the ip addresses
