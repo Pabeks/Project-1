@@ -228,7 +228,7 @@ Access the website from the browser
 ![](./images/wp11.PNG)
 ![](./images/wp-12.PNG)
 
-
+We successfully Introduced Terraform Cloud, Ansible & Packer to Automate AWS Cloud Solution for 2 Company Websites.
 __PROBLEM ENCOUNTERED:__
 - nginx target group was __unhealthy__, restarted the nginx server - `sudo systemctl restart nginx` to fix it.
 - couldn't access the website through the browser. I had to check the configuration files and fixed the configurations.
