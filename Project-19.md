@@ -1,6 +1,8 @@
 ### __USING TERRAFORM IAC TOOL TO AUTOMATE AWS CLOUD SOLUTION FOR 2 COMPANY WEBSITES (INTRODUCING TERRAFORM CLOUD, ANSIBLE & PACKER) - CONTINUATION__.
 
-In [Project-18](https://github.com/dybran/Project-18/blob/main/Project-18.md), we migrated our __terraform.tfstate__ file to __S3__ bucket for easy collaboration amongst DevOps team mates in an organisation. We will be introducing [__Terraform Cloud__](https://developer.hashicorp.com/terraform/cloud-docs) to further automate the process.
+In [Project-18](https://github.com/dybran/Project-18/blob/main/Project-18.md), I migrated the __terraform.tfstate__ file to __S3__ bucket for easy collaboration amongst DevOps team mates in an organisation. I will be introducing [__Terraform Cloud__](https://developer.hashicorp.com/terraform/cloud-docs) to further automate the process.
+
+This documentation provides a step-by-step guide on using Terraform Cloud, Ansible, and Packer together to provision infrastructure in AWS. Terraform is used for defining and managing infrastructure as code, Ansible for configuring servers, and Packer for building machine images. By combining these tools, you can automate the provisioning process and ensure consistent, reproducible infrastructure deployments.
 
 __BENEFITS:__
 
