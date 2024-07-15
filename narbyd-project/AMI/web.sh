@@ -18,6 +18,8 @@ sudo git clone https://github.com/aws/efs-utils /efs-utils/
 cd /efs-utils
 sudo yum install -y make
 sudo yum install -y rpm-build
+sudo yum install gcc -y
+sudo make clean
 sudo make rpm
 sudo yum install -y  ./build/amazon-efs-utils*rpm
 
