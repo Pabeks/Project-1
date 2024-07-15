@@ -14,12 +14,12 @@ sudo setsebool -P httpd_execmem=1
 sudo setsebool -P httpd_use_nfs=1
 
 # installing efs-utils
+sudo find / -name mount.efs
+sudo yum install -y gcc
+sudo make clean
 sudo git clone https://github.com/aws/efs-utils /efs-utils/
 cd /efs-utils
-sudo yum install -y make
-sudo yum install -y rpm-build
-sudo yum install gcc -y
-sudo make clean
+sudo yum -y install git rpm-build make rust cargo openssl-devel
 sudo make rpm
 sudo yum install -y  ./build/amazon-efs-utils*rpm
 
