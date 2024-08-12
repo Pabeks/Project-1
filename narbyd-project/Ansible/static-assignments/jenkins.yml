@@ -1,4 +1,0 @@
----
-- hosts: tag_Name_narbyd_Jenkins
-  roles:
-     - jenkins

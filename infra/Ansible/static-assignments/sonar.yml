@@ -1,0 +1,5 @@
+---
+- hosts: tag_Name_paje_sonarqube
+  user: ubuntu
+  roles:
+     - sonarqube
