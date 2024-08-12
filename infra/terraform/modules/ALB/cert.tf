@@ -1,12 +1,12 @@
-# Create the certificate using a wildcard for all the domains created in mydevopsproject.top
+# Create the certificate using a wildcard for all the domains created in pabeks.com
 resource "aws_acm_certificate" "paje-acm" {
-  domain_name       = "*.mydevopsproject.top"
+  domain_name       = "*.pabeks.com"
   validation_method = "DNS"
 }
 
 # calling the hosted zone
 data "aws_route53_zone" "paje-route53" {
-  name         = "mydevopsproject.top"
+  name         = "pabeks.com"
   private_zone = false
 }
 
@@ -37,7 +37,7 @@ resource "aws_acm_certificate_validation" "paje-acm-v" {
 # create records for tooling
 resource "aws_route53_record" "tooling" {
   zone_id = data.aws_route53_zone.paje-route53.zone_id
-  name    = "tooling.mydevopsproject.top"
+  name    = "tooling.pabeks.com"
   type    = "A"
 
   alias {
@@ -50,7 +50,7 @@ resource "aws_route53_record" "tooling" {
 # create records for wordpress
 resource "aws_route53_record" "wordpress" {
   zone_id = data.aws_route53_zone.paje-route53.zone_id
-  name    = "wordpress.mydevopsproject.top"
+  name    = "wordpress.pabeks.com"
   type    = "A"
 
   alias {

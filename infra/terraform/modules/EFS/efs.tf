@@ -9,7 +9,7 @@ resource "aws_kms_key" "paje-kms" {
     {
       "Sid": "Enable IAM User Permissions",
       "Effect": "Allow",
-      "Principal": { "AWS": "arn:aws:iam::${var.account_no}:user/dybran" },
+      "Principal": { "AWS": "arn:aws:iam::${var.account_no}:root" },
       "Action": "kms:*",
       "Resource": "*"
     }
