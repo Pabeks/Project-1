@@ -45,9 +45,9 @@ First we install __PACKER__ through the powershell - run as administrator.
 Go through the documentation to set up the __PACKER__ file. Click [here](https://developer.hashicorp.com/packer/docs/templates/hcl_templates).
 
 __PACKER__ is used in this project to create the AMIs for the launch templates used by the Auto Scaling Group. The code has been modified for PACKER to create the AMIs. The packer creates the instances, provision the instances using the shell scripts and creates the AMIs. It also deletes the instances when the AMIs are created.
-The codes can be found [here](https://github.com/dybran/Project-19/tree/main/narbyd-project).
+The codes can be found [here](https://github.com/dybran/Project-19/tree/main/paje-project).
 
-`$ cd narbyd-terraform-cloud\narbyd-project\AMI`
+`$ cd paje-terraform-cloud\paje-project\AMI`
 
 Then build the AMIs.
 
@@ -80,11 +80,11 @@ Next we update the __terraform.auto.vars__ with the AMI IDs
 
 We can migrate our codes to __Terraform Cloud__ and manage our __AWS__ infrastructure from the terraform cloud.
 
-Create a new repository in our GitHub __narbyd-terraform-cloud__.
+Create a new repository in our GitHub __paje-terraform-cloud__.
 
 ![](./images/nw.PNG)
 
-Push the Terraform codes in the __narbyd-project__  to the repository.
+Push the Terraform codes in the __paje-project__  to the repository.
 
 ![](./images/np1.PNG)
 ![](./images/np2.PNG)
@@ -112,7 +112,7 @@ We will set the values we used in [Project 16](https://github.com/dybran/Project
 
 Then change the __terraform.tfvars__ to __terraform.auto.tfvars__ on the codes so terraform can use the variables.
 
-__N/B:__ Whenever we update the code in the __narbyd-terraform-cloud__ on GITHUB, the __terraform-cloud__ creates a plan for it automatically making use of version control.
+__N/B:__ Whenever we update the code in the __paje-terraform-cloud__ on GITHUB, the __terraform-cloud__ creates a plan for it automatically making use of version control.
 
 ![](./images/pln-ap.PNG)
 
@@ -166,7 +166,7 @@ and add the __access key__ and __secret key__ to the bastion instance.
 
 ![](./images/12345.PNG)
 
-Then `$ cd /home/ec2-user/Project-19/narbyd-project/Ansible`
+Then `$ cd /home/ec2-user/Project-19/paje-project/Ansible`
 
 Install the __python3-botocore__ and __boto3__
 
@@ -232,7 +232,6 @@ Access the website from the browser
 
 We successfully Introduced Terraform Cloud, Ansible & Packer to Automate AWS Cloud Solution for 2 Company Websites.
 
-__PROBLEMS ENCOUNTERED:__
 - nginx target group was __unhealthy__, restarted the nginx server - `sudo systemctl restart nginx` to fix it.
 - couldn't access the website through the browser. I had to check the configuration files and fixed the configurations.
 
